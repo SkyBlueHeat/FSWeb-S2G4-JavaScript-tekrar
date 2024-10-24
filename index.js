@@ -64,9 +64,18 @@ function CemberinCevresi(cevre) {
 	4. Hesaplanan çemberin alanı döndürülecektir.
 */
 
-function CemberinAlani(yariCap, pi) {
- return pi * Math.pow(yariCap, 2);
+function CemberinAlani(yaricap, piDegeri) {
+  
+  const alan = piDegeri * Math.pow(yaricap, 2);
+  
+  return alan;
 }
+
+
+const yaricap = 5;
+const alan = CemberinAlani(yaricap, pi);
+console.log(alan); 
+
 
 /* (Oto test yok) Yukarıdaki CemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
 
@@ -89,38 +98,96 @@ function CemberinAlani(yariCap, pi) {
 
 /*  (oto test yok) sayilar dizisi içinde kaç adet sayı olduğunu konsola yazdırın */
 
-let ucetambolunenler,
-  enkucuk,
-  enbuyuk,
-  ucebolunenlerintoplami,
-  besyuzdenkucuksayilar,
-  siralisayilar,
-  tekraredensayilar;
+
+
+  
+ 
+
+  
 
 // 3a çözümü
+let enbuyuk = sayilar[0];
+let enkucuk = sayilar[0];
 
-/* kodlar buraya */
+
+for (let i = 1; i < sayilar.length; i++) {
+    if (sayilar[i] > enbuyuk) {
+        enbuyuk = sayilar[i]; 
+    }
+    if (sayilar[i] < enkucuk) {
+        enkucuk = sayilar[i]; 
+    }
+}
+
+
+console.log("En büyük sayı: " + enbuyuk);
+console.log("En küçük sayı: " + enkucuk);
+
 
 // 3b çözümü:
 
-/* kodlar buraya */
+const ucetambolunenler = []; // 3'e tam bölünen sayıları tutacak yeni dizi
+
+sayilar.forEach((sayi) => {
+  if (sayi % 3 === 0) {
+    ucetambolunenler.push(sayi); // 3'e tam bölünen sayıyı ekle
+  }
+});
+console.log(ucetambolunenler)
+
 
 // 3c çözümü:
 
-/* kodlar buraya */
 
+const ucebolunenlerintoplami = ucetambolunenler.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue;
+},0);
+console.log(ucebolunenlerintoplami)
 // 3d çözümü
 
-/* kodlar buraya */
+
+
+
+
+const besyuzdenkucuksayilar = sayilar.filter((sayi) => {
+  return sayi < 500;
+});
+console.log(besyuzdenkucuksayilar)
 
 // 3e çözümü
 
-/* kodlar buraya */
+
+const besyuzdenKucukler = sayilar.filter(sayi => sayi < 500);
+
+console.log("500'den küçük sayılar:", besyuzdenKucukler);
+
+
+const siraliSayilar = besyuzdenKucukler.sort((a, b) => a - b);
+
+
+let siralisayilar = [];
+siraliSayilar.forEach(sayi => siralisayilar.push(sayi));
+
+console.log(siralisayilar);
 
 // 3f çözümü
+const tekrarlar = {};
+const tekraredensayilar = [];
 
-/* kodlar buraya */
+for (let i = 0; i < sayilar.length; i++) {
+  const sayi = sayilar[i];
+  tekrarlar[sayi] = (tekrarlar[sayi] || 0) + 1; // Sayıyı nesnede güncelle
+}
 
+  for (const sayi in tekrarlar) {
+    if (tekrarlar[sayi] > 1) {
+      const tekrarSayisi = tekrarlar[sayi];
+      const cıktı = `${sayi} sayısı ${tekrarSayisi} kere tekrar edilmiştir`;
+      tekraredensayilar.push(cıktı);
+    }
+  }
+
+console.log(tekraredensayilar)
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 
 function sa() {
